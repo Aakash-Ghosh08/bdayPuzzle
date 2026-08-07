@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 2</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Step 2</h1>
+    <p class="clue">Recursion</p>
+    <p class="instructions">Enter the answer below.</p>
+    <input type="text" id="answer-input" placeholder="Type here..." autocomplete="off">
+    <br>
+    <button id="submit-btn">Submit</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function normalize(str) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/^https?:\/\//, "")
+        .replace(/^www\./, "")
+        .replace(/\/+$/, "");
+    }
+
+    function checkAnswer() {
+      var input = document.getElementById("answer-input").value;
+      var userAnswer = normalize(input);
+      var messageEl = document.getElementById("message");
+
+      var validAnswers = [
+        normalize(window.location.hostname),
+        normalize(window.location.origin),
+        normalize(window.location.href)
+      ];
+
+      if (userAnswer.length > 0 && validAnswers.indexOf(userAnswer) !== -1) {
+        messageEl.textContent = "sometimes you have to dig deeper";
+        messageEl.className = "success";
+        console.log(
+          "%cBase case found at: /pictures",
+          "color:#6fcf97; font-size:18px; font-weight:bold;"
+        );
+      } else {
+        messageEl.textContent = "that's not recursive enough";
+        messageEl.className = "error";
+      }
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", checkAnswer);
+    document.getElementById("answer-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkAnswer();
+    });
+  </script>
+</body>
+</html>
