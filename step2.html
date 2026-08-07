@@ -39,12 +39,8 @@
       ];
 
       if (userAnswer.length > 0 && validAnswers.indexOf(userAnswer) !== -1) {
-        messageEl.textContent = "sometimes you have to dig deeper";
+        messageEl.innerHTML = "Correct. <a href=\"/lookbehindthescenes\">Go to the next clue.</a>";
         messageEl.className = "success";
-        console.log(
-          "%cBase case found at: /pictures",
-          "color:#6fcf97; font-size:18px; font-weight:bold;"
-        );
       } else {
         messageEl.textContent = "that's not recursive enough";
         messageEl.className = "error";
