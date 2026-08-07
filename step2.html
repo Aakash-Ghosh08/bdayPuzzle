@@ -39,8 +39,11 @@
       ];
 
       if (userAnswer.length > 0 && validAnswers.indexOf(userAnswer) !== -1) {
-        messageEl.innerHTML = "Correct. <a href=\"/lookbehindthescenes\">Go to the next clue.</a>";
+        messageEl.innerHTML = "Correct. Redirecting to the next clue...";
         messageEl.className = "success";
+        setTimeout(function() {
+          window.location.href = "/hidden";
+        }, 1200);
       } else {
         messageEl.textContent = "that's not recursive enough";
         messageEl.className = "error";

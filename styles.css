@@ -86,6 +86,30 @@ button:hover {
   color: #6fcf97;
 }
 
+.hidden-page {
+  background: #000;
+  color: #000;
+}
+
+.hidden-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.hidden-text {
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hidden-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
 #message.error {
   color: #eb5757;
 }
