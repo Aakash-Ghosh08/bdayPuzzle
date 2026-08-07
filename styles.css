@@ -89,17 +89,19 @@ button:hover {
 .hidden-page {
   background: #000;
   color: #000;
+  min-height: 100vh;
 }
 
 .hidden-container {
+  position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 2rem;
 }
 
 .hidden-text {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
   color: #000;
   font-size: 1rem;
   line-height: 1.6;
