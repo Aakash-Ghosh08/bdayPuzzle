@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crossroads</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container crossroads-page">
+    <h1>Crossroads</h1>
+    <p class="instructions">driving down country lanes, but to who?</p>
+    <div class="image-card">
+      <img src="/crossroads.svg" alt="Crossroads puzzle image">
+    </div>
+    <p class="instructions">Enter the password below to continue.</p>
+    <input type="password" id="password-input" placeholder="Password" autocomplete="off">
+    <br>
+    <button id="submit-btn">Submit</button>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function showMessage(text, isSuccess) {
+      var messageEl = document.getElementById("message");
+      messageEl.textContent = text;
+      messageEl.className = isSuccess ? "success" : "error";
+    }
+
+    function checkPassword() {
+      var input = document.getElementById("password-input").value.trim().toLowerCase();
+      if (input === "mcdonald") {
+        showMessage("Password accepted. Redirecting...", true);
+        setTimeout(function() {
+          window.location.href = "/vigenere";
+        }, 900);
+      } else {
+        showMessage("That password is not correct.", false);
+      }
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", checkPassword);
+    document.getElementById("password-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkPassword();
+    });
+  </script>
+</body>
+</html>
