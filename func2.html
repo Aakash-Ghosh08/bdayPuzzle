@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUNC2</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>FUNC2</h1>
+    <p class="instructions">To determine the answer to this function, you must first determine the answer to func3.</p>
+    <p class="instructions">Answer:</p>
+    <input type="text" id="answer-input" placeholder="Type your answer..." autocomplete="off">
+    <br>
+    <button id="submit-btn">Submit</button>
+    <p id="message"></p>
+    <p class="instructions">You may proceed only if your answer is correct.</p>
+  </div>
+
+  <script>
+    function showMessage(text, isSuccess) {
+      var messageEl = document.getElementById("message");
+      messageEl.textContent = text;
+      messageEl.className = isSuccess ? "success" : "error";
+    }
+
+    function checkAnswer() {
+      var input = document.getElementById("answer-input").value.trim();
+      if (!input) {
+        showMessage("You must enter something to continue.", false);
+        return;
+      }
+      showMessage("FUNC2 cannot resolve without information from func3. Try visiting /func3.", false);
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", checkAnswer);
+    document.getElementById("answer-input").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") checkAnswer();
+    });
+  </script>
+
+  <!-- There is no rule saying you have to enter through the front door. /catch22 is the hidden result of func2 + func3. -->
+</body>
+</html>
